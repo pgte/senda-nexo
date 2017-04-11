@@ -1,10 +1,14 @@
 import { initStore } from '../store'
 import withRedux from 'next-redux-wrapper'
 
+import Panel from '../components/Panel'
+
 class App extends React.Component {
   render() {
     return (
-      <div>Test 123</div>
+      <Panel title='Test Title'>
+        Hey
+      </Panel>
     );
   }
 }
