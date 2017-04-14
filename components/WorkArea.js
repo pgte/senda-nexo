@@ -36,7 +36,6 @@ export default class WorkArea extends React.Component {
   }
 
   render () {
-      console.log('RENDEREING', this.xPos())
     const wrapperStyle = {
       height: '1000px',
       width: '2000px',
@@ -44,11 +43,22 @@ export default class WorkArea extends React.Component {
       transition: 'transform .5s ease-in-out'
     }
 
+    const childStyle = {
+      width: '550px',
+      float: 'left',
+      whiteSpace: 'normal',
+      marginRight: `${this.props.margin}px`
+    }
+
     return (
       <TouchEvents onSwipe={::this.handleSwipe}>
         <div style={{width: `${this.props.width}px`, height: `${this.props.height}px`, overflow: 'hidden'}}>
           <div style={wrapperStyle}>
-            {this.props.children}
+            {this.props.children.map(child => (
+              <div style={childStyle}>
+                {child}
+              </div>
+            ))}
           </div>
         </div>
       </TouchEvents>
@@ -58,5 +68,10 @@ export default class WorkArea extends React.Component {
 
 WorkArea.propTypes = {
   width: React.PropTypes.number.isRequired,
-  height: React.PropTypes.number.isRequired
+  height: React.PropTypes.number.isRequired,
+  margin: React.PropTypes.number
+}
+
+WorkArea.defaultProps = {
+  margin: 10
 }
