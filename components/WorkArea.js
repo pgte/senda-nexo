@@ -12,10 +12,8 @@ export default class WorkArea extends React.Component {
   }
 
   handleSwipe (direction) {
-    console.log('swiped 2 ', direction)
     switch (direction) {
       case 'right':
-        console.log('RIGHT', this.state.posX)
         this.setState({
           posX: this.state.posX - 1
         })
@@ -25,14 +23,12 @@ export default class WorkArea extends React.Component {
           posX: this.state.posX + 1
         })
         break
-
-      console.log(state.posX)
     }
 
   }
 
   xPos () {
-    return this.state.posX * this.props.width
+    return this.state.posX * (this.props.width + this.props.margin)
   }
 
   render () {
@@ -44,7 +40,9 @@ export default class WorkArea extends React.Component {
     }
 
     const childStyle = {
-      width: '550px',
+      width: `${this.props.width}px`,
+      height: `${this.props.height}px`,
+      overflow: 'hidden',
       float: 'left',
       whiteSpace: 'normal',
       marginRight: `${this.props.margin}px`
