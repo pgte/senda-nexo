@@ -1,31 +1,31 @@
 import React from 'react';
 import TouchEvents from 'react-touch-events'
 
-export default class WorkArea extends React.Component {
+export default class WorkCollection extends React.Component {
 
   constructor (props) {
     super(props)
     this.state = {
-      posX: 0
+      posY: 0
     }
   }
 
   handleSwipe (direction) {
     switch (direction) {
-      case 'right':
-        if (this.state.posX > 0) {
+      case 'top':
+        if (this.state.posY < (this.children().length - 1)) {
           this.setState({
-            posX: this.state.posX - 1
+            posY: this.state.posY + 1
           })
         }
         break
-      case 'left':
-        if (this.state.posX < (this.children().length - 1)) {
+      case 'bottom':
+        if (this.state.posY > 0) {
           this.setState({
-            posX: this.state.posX + 1
+            posY: this.state.posY - 1
           })
         }
-        break
+          break
     }
 
   }
@@ -34,15 +34,15 @@ export default class WorkArea extends React.Component {
     return Array.isArray(this.props.children) ? this.props.children : [this.props.children]
   }
 
-  xPos () {
-    return this.state.posX * (this.props.width + this.props.margin)
+  yPos () {
+    return this.state.posY * (this.props.height + this.props.margin)
   }
 
   render () {
     const wrapperStyle = {
-      height: '1000px',
-      width: '2000px',
-      transform: `translate3d(-${this.xPos()}px, 0px, 0)`,
+      height: '2000px',
+      width: `${this.props.width}px`,
+      transform: `translate3d(0px, -${this.yPos()}px, 0)`,
       transition: 'transform .5s ease-in-out'
     }
 
@@ -50,12 +50,9 @@ export default class WorkArea extends React.Component {
       width: `${this.props.width}px`,
       height: `${this.props.height}px`,
       overflow: 'hidden',
-      float: 'left',
       whiteSpace: 'normal',
-      marginRight: `${this.props.margin}px`
+      marginBottom: `${this.props.margin}px`
     }
-
-    console.log(Array.isArray(this.props.children))
 
     const children = this.children()
 
@@ -75,12 +72,12 @@ export default class WorkArea extends React.Component {
   }
 }
 
-WorkArea.propTypes = {
+WorkCollection.propTypes = {
   width: React.PropTypes.number.isRequired,
   height: React.PropTypes.number.isRequired,
   margin: React.PropTypes.number
 }
 
-WorkArea.defaultProps = {
+WorkCollection.defaultProps = {
   margin: 10
 }
