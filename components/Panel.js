@@ -11,8 +11,15 @@ import {
 
 export default class Panel extends React.Component {
   render () {
+    const panelStyle = {
+      width: '550px',
+      float: 'left',
+      whiteSpace: 'normal',
+      backgroundRepeat: 'no-repeat'
+    }
+
     return (
-      <PanelContainer>
+      <PanelContainer style={panelStyle}>
         <PanelHeader className='bg-orange65 fg-white'>
           <Grid>
             <Row>
