@@ -1,15 +1,11 @@
-import Document, { Head, Main, NextScript } from 'next/document'
+import Document, { Head, NextScript } from 'next/document'
 import flush from 'styled-jsx/server'
 
-import {
-  MainContainer,
-  Grid,
-  Row,
-  Col
-} from '@sketchpixy/rubix'
+import { MainContainer } from '@sketchpixy/rubix'
 
 import Sidebar from '../components/sidebar'
 import Header from '../components/header'
+import Body from '../components/Body'
 import Footer from '../components/footer'
 
 export default class MyDocument extends Document {
@@ -29,20 +25,12 @@ export default class MyDocument extends Document {
           <link href="/static/css/main.css" rel="stylesheet" type="text/css" />
           <script type="text/javascript" src='/static/js/pace.min.js'></script>
         </Head>
-        <body className="pace-big" data-version="4.1.0">
+        <body className="pace-big">
           {this.props.customValue}
           <MainContainer {...this.props}>
             <Sidebar pathname={this.props.pathname} />
             <Header {...this.props} />
-            <div id='body'>
-              <Grid>
-                <Row>
-                  <Col xs={12}>
-                    <Main />
-                  </Col>
-                </Row>
-              </Grid>
-            </div>
+            <Body />
             <Footer />
           </MainContainer>
           <NextScript />

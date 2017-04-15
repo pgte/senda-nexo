@@ -40,8 +40,8 @@ export default class WorkCollection extends React.Component {
 
   render () {
     const wrapperStyle = {
-      height: '2000px',
-      width: `${this.props.width}px`,
+      height: `${this.children().length * (this.props.height + this.props.margin)}px`,
+      width: `${this.props.width + this.props.margin}px`,
       transform: `translate3d(0px, -${this.yPos()}px, 0)`,
       transition: 'transform .5s ease-in-out'
     }

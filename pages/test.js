@@ -1,33 +1,39 @@
 import { initStore } from '../store'
 import withRedux from 'next-redux-wrapper'
 
+import Page from '../components/Page'
 import WorkArea from '../components/WorkArea'
 import WorkCollection from '../components/WorkCollection'
 import Panel from '../components/Panel'
 
-class App extends React.Component {
+class App extends Page {
+  componentDidMount() {
+    console.log('1 COMPONENT DID MOUNT')
+  }
   render() {
+    const width = this.state.width
+    const height = this.state.height
     return (
-      <WorkArea width={550} height={350}>
-        <WorkCollection height={350} width={550}>
-          <Panel title='1.1'>
+      <WorkArea width={width} height={height}>
+        <WorkCollection width={width} height={height}>
+          <Panel title='1.1' height={height}>
             Hey
           </Panel>
-          <Panel title='1.2'>
+          <Panel title='1.2' height={height}>
             Yo
           </Panel>
-          <Panel title='1.3'>
+          <Panel title='1.3' height={height}>
             Yo
           </Panel>
         </WorkCollection>
-        <WorkCollection height={350} width={550}>
-          <Panel title='2.1'>
+        <WorkCollection height={height} width={width}>
+          <Panel title='2.1' height={height}>
             Hey
           </Panel>
-          <Panel title='2.2'>
+          <Panel title='2.2' height={height}>
             Yo
           </Panel>
-          <Panel title='2.3'>
+          <Panel title='2.3' height={height}>
             Yo
           </Panel>
         </WorkCollection>

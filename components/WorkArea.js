@@ -40,8 +40,8 @@ export default class WorkArea extends React.Component {
 
   render () {
     const wrapperStyle = {
-      height: '1000px',
-      width: '2000px',
+      height: '40000px',
+      width: `${(this.props.margin + this.props.width) * this.children().length}px`,
       transform: `translate3d(-${this.xPos()}px, 0px, 0)`,
       transition: 'transform .5s ease-in-out'
     }

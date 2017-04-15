@@ -25,7 +25,7 @@ export default class Panel extends React.Component {
         <PanelBody>
           <Grid>
             <Row>
-              <Col xs={12}>
+              <Col xs={12} style={{height: this.props.height - 79.5}}>
                 {this.props.children}
               </Col>
             </Row>
@@ -37,5 +37,6 @@ export default class Panel extends React.Component {
 }
 
 Panel.propTypes = {
-  title: React.PropTypes.string.isRequired
+  title: React.PropTypes.string.isRequired,
+  height: React.PropTypes.number
 }
