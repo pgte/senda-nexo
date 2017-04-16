@@ -10,7 +10,6 @@ import Footer from '../components/footer'
 
 export default class MyDocument extends Document {
   static getInitialProps ({ renderPage, pathname, query }) {
-    console.log('pathname', pathname)
     const {html, head} = renderPage()
     const styles = flush()
     return { html, head, styles, pathname, query }

@@ -7,9 +7,6 @@ import WorkCollection from '../components/WorkCollection'
 import Panel from '../components/Panel'
 
 class App extends Page {
-  componentDidMount() {
-    console.log('1 COMPONENT DID MOUNT')
-  }
   render() {
     const width = this.state.width
     const height = this.state.height
@@ -30,7 +27,7 @@ class App extends Page {
           <Panel title='2.1' height={height}>
             Hey
           </Panel>
-          <Panel title='2.2' height={height}>
+          <Panel title='2.2' selected height={height}>
             Yo
           </Panel>
           <Panel title='2.3' height={height}>

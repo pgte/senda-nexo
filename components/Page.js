@@ -22,6 +22,9 @@ export default class Page extends React.Component {
 
     // const height = 300;
     // const width = 550;
+    if (!viewport || !header || !sidebar || !footer) {
+      return
+    }
     const width = viewport.clientWidth - sidebar.clientWidth - 50
     const height = viewport.clientHeight - header.clientHeight - footer.clientHeight -  50
 
@@ -33,8 +36,9 @@ export default class Page extends React.Component {
     }
   }
 
-  componentDidUnmount () {
-    clearInterval(this._sizeQueryInterval)
-    console.log('3 COMPONENT DID UNMOUNT')
+  componentWillUnmount () {
+    if (this._sizeQueryInterval) {
+      clearInterval(this._sizeQueryInterval)
+    }
   }
 }
